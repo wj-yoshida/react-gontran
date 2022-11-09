@@ -8,7 +8,8 @@ import Home from "./components/pages/Home";
 import Location from "./components/pages/Location";
 import About from "./components/pages/About";
 
-import './App.css';
+import './App.scss';
+import './scss/style.scss';
 
 const App = () => {
   return (

@@ -4,6 +4,8 @@ import Head from "../block/Head"
 /*import { Link } from "react-router-dom";*/
 import SwiperCore, { Autoplay } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react';
+import {motion} from "framer-motion";
+
 import 'swiper/swiper-bundle.css';
 SwiperCore.use([Autoplay])
 /* eslint-disable import/first */
@@ -61,6 +63,12 @@ const Home = () => {
   return (
     <>
         <Head title="ゴントラン シェリエ ジャポン" />
+        <motion.div
+          animate={{ opacity:1 }}
+          initial={{ opacity:0 }}
+          exit={{ opacity:0 }}
+          transition={{ duration: 0.4}}
+        >
         <section className="common__head">
           <a className="common__head__sidelink sidelink__left font-minervamodern" href="/?mode=cate&csid=0&cbid=2750575">ONLINE STORE</a>
           <div className="common__head__kv">
@@ -210,6 +218,8 @@ const Home = () => {
               <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_follow_us.svg" className="top__instagram__bgtxt" />
             </section>
         </div>
+
+        </motion.div>
     </>
   );
 };

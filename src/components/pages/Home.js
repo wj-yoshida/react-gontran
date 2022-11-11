@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react';
+import React,{ useState, useEffect, useRef } from 'react';
 
 import Head from "../block/Head"
 /*import { Link } from "react-router-dom";*/
@@ -11,7 +11,7 @@ SwiperCore.use([Autoplay])
 /* eslint-disable import/first */
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
-
+gsap.registerPlugin(ScrollTrigger)
 
 const params1 = {
   loop: true,
@@ -36,16 +36,16 @@ const params3 = {
   mode: 'horizontal',
   loop: false,
   slidesPerView: 'auto',
-  resizeReInit: true,
+  //resizeReInit: true,
   autoHeight: false,
-  scrollContainer: true,
+  //scrollContainer: true,
   grabCursor: true,
-  createPagination: false,
+  //createPagination: false,
   preventClicks: false,
   freeMode: true,
-  freeModeFluid: true,
+  //freeModeFluid: true,
   spaceBetween: 60,
-  dynamicBullets: false,
+  //dynamicBullets: false,
   mousewheel: {
     invert: true,
     forceToAxis: true
@@ -59,7 +59,47 @@ const params3 = {
     draggable: true
   }
 }
+
 const Home = () => {
+  const topAboutRef = useRef(null);
+  
+  useEffect(() => {
+      
+      gsap.fromTo( 
+        '#top__about__img',
+        { opacity: 0 }, //fromの設定
+        {  //toの設定
+          opacity: 1,
+          duration: 2,
+          scrollTrigger: {
+            trigger: '#top__about',
+            start: 'top center', //要素のトップが、画面の中央まできたら開始
+            end: 'center center', //要素のボトムが、画面の中央まできたら終了
+            scrub: true,
+            
+          },
+        }
+      )
+
+      let topAboutTxt = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#top__about",
+          start: '25% center', //要素のトップが、画面の中央まできたら開始
+          end: '75% center', //要素のボトムが、画面の中央まできたら終了
+          scrub: 1,
+          markers: true,
+          /*
+          snap: {
+            snapTo: "labels", // snap to the closest label in the timeline
+            duration: {min: 0.2, max: 3}, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+            ease: "power2.out" // the ease of the snap animation ("power3" by default)
+          },
+          */
+        },
+      })
+      topAboutTxt.from("#top__about__txt",  { yPercent: 20}, 0).to("#top__about__txt",  { yPercent: 0}, 0)
+  }, [])
+
   return (
     <>
         <Head title="ゴントラン シェリエ ジャポン" />
@@ -69,36 +109,36 @@ const Home = () => {
           exit={{ opacity:0 }}
           transition={{ duration: 0.4}}
         >
-        <section className="common__head">
+
+        <section id="common__head" className="common__head" >
           <a className="common__head__sidelink sidelink__left font-minervamodern" href="/?mode=cate&csid=0&cbid=2750575">ONLINE STORE</a>
           <div className="common__head__kv">
             <Swiper className="swiper-container top_kv_slider common__head__kv__wrap"  {...params1}>
-                <SwiperSlide className="common__head__kv__img_">
-                  <div className="img">
-                    <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_01.jpg?cmsp_timestamp=20220920115317" className="pc" />
-                    <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
-                  </div>
+              <SwiperSlide className="common__head__kv__img_">
+                <div className="img">
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_01.jpg?cmsp_timestamp=20220920115317" className="pc" />
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide className="common__head__kv__img_">
+                <div className="img">
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_02.jpg?cmsp_timestamp=20220920115317" className="pc" />
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_02_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
+                </div>
                 </SwiperSlide>
-                <SwiperSlide className="common__head__kv__img_">
-                  <div className="img">
-                    <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_02.jpg?cmsp_timestamp=20220920115317" className="pc" />
-                    <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_02_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
-                  </div>
-                  </SwiperSlide>
-                <SwiperSlide className="common__head__kv__img_">
-                  <div className="img">
-                    <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_03.jpg?cmsp_timestamp=20220920115317" className="pc" />
-                    <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_03_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
-                  </div>
-                  </SwiperSlide>
+              <SwiperSlide className="common__head__kv__img_">
+                <div className="img">
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_03.jpg?cmsp_timestamp=20220920115317" className="pc" />
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_03_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
+                </div>
+                </SwiperSlide>
 
             </Swiper>
             <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo.svg" className="common__head__kv__logo pc" />
           </div>
           <a className="common__head__sidelink sidelink__right font-minervamodern" href="https://www.instagram.com/gontrancherrierjp/" target="_blank">FOLLOW US ON INSTAGRAM</a>
-        </section>
-        
-        <Swiper className="top__head__news" {...params2}>
+
+          <Swiper className="top__head__news" {...params2}>
             <SwiperSlide>
                   2022/09/28
                     <a href="https://cms.mkp.jp/pdf/news/detail/2603_77529883.pdf">新宿店オープンのお知らせ</a>
@@ -107,23 +147,22 @@ const Home = () => {
                   2022/09/20
                   ホームページをリニューアルしました。
             </SwiperSlide>
-        </Swiper>
-
-
-        <section className="top__about ttl_anim act">
+          </Swiper>
+        </section>
+        <section id="top__about" className="top__about ttl_anim act" ref={topAboutRef}>
           <h3 className="top__about__ttl sp font-minervamodern">
             <span>About</span>
             <span>Gontran</span>
             <span>Cherrier</span>
           </h3>
-          <div className="top__about__img">
+          <div id="top__about__img" className="top__about__img">
             <div className="top__about__img__wrap ttl_anim_img">
               <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01.jpg?cmsp_timestamp=20220920115317" className="pc" width="535" />
               <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
             </div>
             <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_about.svg" className="top__about__img__bgtxt" />
           </div>
-          <div className="top__about__txt">
+          <div id="top__about__txt" className="top__about__txt">
             <h3 className="top__about__txt__h3 font-minervamodern ttl_anim_h2">
               <span className="ttl_anim_h2_span">
                 About<br />

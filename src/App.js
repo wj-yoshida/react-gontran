@@ -11,6 +11,7 @@ import Location from "./components/pages/Location";
 import About from "./components/pages/About";
 
 import Test from "./components/pages/Test";
+import Scroll from "./components/pages/Scroll";
 
 import './App.scss';
 import './scss/style.scss';
@@ -26,6 +27,7 @@ const App = () => {
           <Route path={"/location/"} element={<Location />} />
           <Route path={"/about/"} element={<About />} />
           <Route path={"/test/"} element={<Test />} />
+          <Route path={"/scroll/"} element={<Scroll />} />
         </Routes>
         </main>
       </AnimatePresence>

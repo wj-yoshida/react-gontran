@@ -60,21 +60,20 @@ const params3 = {
   }
 }
 
-const Home = () => {
-  const topAboutRef = useRef(null);
-
+function InstagramList() {
+  const InstagramListRef = useRef();
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
-  
+
   useEffect(() => {
-      fetch("https://graph.facebook.com/v5.0/17841421692100141?fields=name%2Cmedia.limit(4)%7Bcaption%2Clike_count%2Cmedia_url%2Cpermalink%2Ctimestamp%2Cthumbnail_url%2Cmedia_type%2Cusername%7D&access_token=EAAFoqmk5AR0BAKx3QqXOjuJm8Jng8uNOrqAiWRbek51V90r72lQ0CZAbEqRocB32exg1246ZBOE94epZCC9ITnPZBboKcHZB6lWLM1TWIkiUdZAmiY3gHRDwZByXAwmgm4eOhZBTpfpzf0FTy6uo9e0SBZBygKBkNa7OWTGeSIeZAt9GPTZBodUdo3BAElCOrvZBIZAjqHq1e0LpAWroA2Qeyfuoc")
+    
+    fetch("https://graph.facebook.com/v5.0/17841421692100141?fields=name%2Cmedia.limit(4)%7Bcaption%2Clike_count%2Cmedia_url%2Cpermalink%2Ctimestamp%2Cthumbnail_url%2Cmedia_type%2Cusername%7D&access_token=EAAFoqmk5AR0BADYRqPWkfo8oVmkoqrjEwvZB7ANhqnZC1SmbYNkPmrOLABBskhrrjjbRUCqAxHji6fQpkyoFIf5Wwv39ucqH8ABaKmLpetPNMuMppZCeuCmE2eWroEZBayrpiLWLVLRzRruZA6T1rmEvJjm6ECWQArj0yWCWzZBZCf7YRF2mndZA1uJ2ZBHgCyGaZBVb9zFk4ErZBeAZAdJOuAidPFeD8d0U1fUpKSHYIkcR4AZDZD")
       .then(res => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
           setItems(result.media.data);
-          console.log(result.media.data);
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
@@ -84,6 +83,23 @@ const Home = () => {
           setError(error);
         }
       )
+  }, [InstagramListRef])
+  return (
+    <ul ref={InstagramListRef} className="insta_list top__instagram__ul ">
+      {items.map(item => (
+        <li className="top__instagram__li" key={item.id}>
+          <a href={item.permalink} target="_blank">
+            {item.media_type == "IMAGE" ? <img src={item.media_url} /> : <img src={item.thumbnail_url} />}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function TopAbout() {
+  const topAboutRef = useRef(null);
+  useEffect(() => {
       gsap.fromTo( 
         '#top__about__img',
         { opacity: 0 }, //fromの設定
@@ -118,6 +134,38 @@ const Home = () => {
       })
       topAboutTxt.from("#top__about__txt",  { yPercent: 20}, 0).to("#top__about__txt",  { yPercent: 0}, 0)
   }, [])
+  return (
+    <section id="top__about" className="top__about ttl_anim act" ref={topAboutRef}>
+      <h3 className="top__about__ttl sp font-minervamodern">
+        <span>About</span>
+        <span>Gontran</span>
+        <span>Cherrier</span>
+      </h3>
+      <div id="top__about__img" className="top__about__img">
+        <div className="top__about__img__wrap ttl_anim_img">
+          <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01.jpg?cmsp_timestamp=20220920115317" className="pc" width="535" />
+          <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
+        </div>
+        <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_about.svg" className="top__about__img__bgtxt" />
+      </div>
+      <div id="top__about__txt" className="top__about__txt">
+        <h3 className="top__about__txt__h3 font-minervamodern ttl_anim_h2">
+          <span className="ttl_anim_h2_span">
+            About<br />
+            Gontran Cherrier
+          </span>
+        </h3>
+        <p className="top__about__txt__p ttl_anim_p">
+          ゴントラン・シェリエ氏は、フランス・ノルマンディー出身の4代目ブーランジェです。同氏は、Ferrandi Culinary schoolとLes Grands Moulins de Parisという二つの著名な調理学校を卒業後、Alain Passard 氏の手掛ける3つ星レストラン L’ArpegeやAlain Senderens氏のLucas Cartonで勤めたのち、2010年に自身のブーランジェリーをフランス・パリ（モンマルトル）にオープンさせました。その人気はフランスにとどまらずアジア・北米・中東でも約60店舗を展開するまでに至り、各国の人々に親しまれています。
+        </p>
+        <a href="/?mode=f1" className="btn_bk font-minervamodern"><span>MORE DETAIL</span></a>
+      </div>
+    </section>
+  );
+}
+
+const Home = () => {
+
 
   return (
     <>
@@ -168,32 +216,8 @@ const Home = () => {
             </SwiperSlide>
           </Swiper>
         </section>
-        <section id="top__about" className="top__about ttl_anim act" ref={topAboutRef}>
-          <h3 className="top__about__ttl sp font-minervamodern">
-            <span>About</span>
-            <span>Gontran</span>
-            <span>Cherrier</span>
-          </h3>
-          <div id="top__about__img" className="top__about__img">
-            <div className="top__about__img__wrap ttl_anim_img">
-              <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01.jpg?cmsp_timestamp=20220920115317" className="pc" width="535" />
-              <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
-            </div>
-            <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_about.svg" className="top__about__img__bgtxt" />
-          </div>
-          <div id="top__about__txt" className="top__about__txt">
-            <h3 className="top__about__txt__h3 font-minervamodern ttl_anim_h2">
-              <span className="ttl_anim_h2_span">
-                About<br />
-                Gontran Cherrier
-              </span>
-            </h3>
-            <p className="top__about__txt__p ttl_anim_p">
-              ゴントラン・シェリエ氏は、フランス・ノルマンディー出身の4代目ブーランジェです。同氏は、Ferrandi Culinary schoolとLes Grands Moulins de Parisという二つの著名な調理学校を卒業後、Alain Passard 氏の手掛ける3つ星レストラン L’ArpegeやAlain Senderens氏のLucas Cartonで勤めたのち、2010年に自身のブーランジェリーをフランス・パリ（モンマルトル）にオープンさせました。その人気はフランスにとどまらずアジア・北米・中東でも約60店舗を展開するまでに至り、各国の人々に親しまれています。
-            </p>
-            <a href="/?mode=f1" className="btn_bk font-minervamodern"><span>MORE DETAIL</span></a>
-          </div>
-        </section>
+        <TopAbout />
+
         <div className="top__wrap_online_news ">
           <section className="top__store ttl_anim act">
             <div className="top__store__wrap">
@@ -266,17 +290,7 @@ const Home = () => {
                 </span>
               </h2>
               <div className="">
-                <ul className="insta_list top__instagram__ul ">
-                  {items.map(item => (
-                    
-                    <li className="top__instagram__li" key={item.id}>
-                      <a href={item.permalink} target="_blank">
-                        {item.media_type == "IMAGE" ? <img src={item.media_url} /> : <img src={item.thumbnail_url} />}
-                      </a>
-                    </li>
-                    
-                  ))}
-                </ul>
+                <InstagramList />
               </div>
               <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_follow_us.svg" className="top__instagram__bgtxt" />
             </section>

@@ -62,9 +62,28 @@ const params3 = {
 
 const Home = () => {
   const topAboutRef = useRef(null);
+
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
   
   useEffect(() => {
-      
+      fetch("https://graph.facebook.com/v5.0/17841421692100141?fields=name%2Cmedia.limit(4)%7Bcaption%2Clike_count%2Cmedia_url%2Cpermalink%2Ctimestamp%2Cthumbnail_url%2Cmedia_type%2Cusername%7D&access_token=EAAFoqmk5AR0BAKx3QqXOjuJm8Jng8uNOrqAiWRbek51V90r72lQ0CZAbEqRocB32exg1246ZBOE94epZCC9ITnPZBboKcHZB6lWLM1TWIkiUdZAmiY3gHRDwZByXAwmgm4eOhZBTpfpzf0FTy6uo9e0SBZBygKBkNa7OWTGeSIeZAt9GPTZBodUdo3BAElCOrvZBIZAjqHq1e0LpAWroA2Qeyfuoc")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result.media.data);
+          console.log(result.media.data);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
       gsap.fromTo( 
         '#top__about__img',
         { opacity: 0 }, //fromの設定
@@ -248,10 +267,15 @@ const Home = () => {
               </h2>
               <div className="">
                 <ul className="insta_list top__instagram__ul ">
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/reel/CkP1eYNA61A/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.29350-15/312785036_1401511007044593_4040544817137242914_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=A6T-H7SI-FwAX_5MYIr&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfAjmAR2eQl1kz4we1PN5K_8L8aN80y-qdnqJQ0wc6hAvA&amp;oe=63695146" /></a></li>
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/p/CkNvapmL6xT/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/312814755_1267457737373827_3896374972202093947_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=A1qJyAhCMZsAX-30Kbo&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfBAfNq_aJYjdNfnR44NDuyZ7DTqf8s85VRJ_y03vOKsCg&amp;oe=636A99CF" /></a></li>
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/reel/CkFBCkGJ8Q4/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.29350-15/306544235_3342888585981656_6730518387315700015_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=uQNYtpL4NFsAX9sIbqx&amp;_nc_oc=AQk0Uv7ZF8fgmfX3d6fFFFbQjrcwpKEEbpFmA01laRQC-xMlscWjT2vAcS7akvZrJb4&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfDPmO44McVpQTLmiiusdaBPg8OMlmV6wJv-Z9qn1E-j1g&amp;oe=63693C92" /></a></li>
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/p/Cj-So95PIH7/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/312074347_1174437486616309_8025921210695619612_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=nm-fyWy5yFQAX-h8BHF&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfDv-56hdV1pYvdZR-usgGwjr22gNDZtPzKYg2LTyPEgYA&amp;oe=6368F91B" /></a></li>
+                  {items.map(item => (
+                    
+                    <li className="top__instagram__li" key={item.id}>
+                      <a href={item.permalink} target="_blank">
+                        {item.media_type == "IMAGE" ? <img src={item.media_url} /> : <img src={item.thumbnail_url} />}
+                      </a>
+                    </li>
+                    
+                  ))}
                 </ul>
               </div>
               <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_follow_us.svg" className="top__instagram__bgtxt" />

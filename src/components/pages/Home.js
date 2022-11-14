@@ -67,7 +67,7 @@ function InstagramList() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    
+    /*
     fetch("https://graph.facebook.com/v5.0/17841421692100141?fields=name%2Cmedia.limit(4)%7Bcaption%2Clike_count%2Cmedia_url%2Cpermalink%2Ctimestamp%2Cthumbnail_url%2Cmedia_type%2Cusername%7D&access_token=EAAFoqmk5AR0BADYRqPWkfo8oVmkoqrjEwvZB7ANhqnZC1SmbYNkPmrOLABBskhrrjjbRUCqAxHji6fQpkyoFIf5Wwv39ucqH8ABaKmLpetPNMuMppZCeuCmE2eWroEZBayrpiLWLVLRzRruZA6T1rmEvJjm6ECWQArj0yWCWzZBZCf7YRF2mndZA1uJ2ZBHgCyGaZBVb9zFk4ErZBeAZAdJOuAidPFeD8d0U1fUpKSHYIkcR4AZDZD")
       .then(res => res.json())
       .then(
@@ -83,6 +83,7 @@ function InstagramList() {
           setError(error);
         }
       )
+      */
   }, [InstagramListRef])
   return (
     <ul ref={InstagramListRef} className="insta_list top__instagram__ul ">

@@ -1,4 +1,4 @@
-import React,{ useState, useEffect, useRef } from 'react';
+import React,{ useEffect, useRef } from 'react';
 
 import Head from "../block/Head"
 /*import { Link } from "react-router-dom";*/
@@ -12,6 +12,9 @@ SwiperCore.use([Autoplay])
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
+
+/* eslint-disable import/first */
+import '../../scss/top.scss';
 
 const params1 = {
   loop: true,
@@ -116,27 +119,27 @@ const Home = () => {
             <Swiper className="swiper-container top_kv_slider common__head__kv__wrap"  {...params1}>
               <SwiperSlide className="common__head__kv__img_">
                 <div className="img">
-                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_01.jpg?cmsp_timestamp=20220920115317" className="pc" />
-                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_01.jpg?cmsp_timestamp=20220920115317" className="pc" alt="画像" />
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" alt="画像" />
                 </div>
               </SwiperSlide>
               <SwiperSlide className="common__head__kv__img_">
                 <div className="img">
-                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_02.jpg?cmsp_timestamp=20220920115317" className="pc" />
-                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_02_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_02.jpg?cmsp_timestamp=20220920115317" className="pc" alt="画像"  />
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_02_sp.jpg?cmsp_timestamp=20220920115317" className="sp" alt="画像"  />
                 </div>
                 </SwiperSlide>
               <SwiperSlide className="common__head__kv__img_">
                 <div className="img">
-                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_03.jpg?cmsp_timestamp=20220920115317" className="pc" />
-                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_03_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_03.jpg?cmsp_timestamp=20220920115317" className="pc" alt="画像"  />
+                  <img src="https://img07.shop-pro.jp/PA01461/818/etc/topSlider_03_sp.jpg?cmsp_timestamp=20220920115317" className="sp" alt="画像"  />
                 </div>
                 </SwiperSlide>
 
             </Swiper>
-            <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo.svg" className="common__head__kv__logo pc" />
+            <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo.svg" className="common__head__kv__logo pc" alt="画像"  />
           </div>
-          <a className="common__head__sidelink sidelink__right font-minervamodern" href="https://www.instagram.com/gontrancherrierjp/" target="_blank">FOLLOW US ON INSTAGRAM</a>
+          <a className="common__head__sidelink sidelink__right font-minervamodern" href="https://www.instagram.com/gontrancherrierjp/" target="_blank" rel="noreferrer">FOLLOW US ON INSTAGRAM</a>
 
           <Swiper className="top__head__news" {...params2}>
             <SwiperSlide>
@@ -157,10 +160,10 @@ const Home = () => {
           </h3>
           <div id="top__about__img" className="top__about__img">
             <div className="top__about__img__wrap ttl_anim_img">
-              <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01.jpg?cmsp_timestamp=20220920115317" className="pc" width="535" />
-              <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
+              <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01.jpg?cmsp_timestamp=20220920115317" className="pc" width="535" alt="画像"  />
+              <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" alt="画像"  />
             </div>
-            <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_about.svg" className="top__about__img__bgtxt" />
+            <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_about.svg" className="top__about__img__bgtxt" alt="画像"  />
           </div>
           <div id="top__about__txt" className="top__about__txt">
             <h3 className="top__about__txt__h3 font-minervamodern ttl_anim_h2">
@@ -192,19 +195,19 @@ const Home = () => {
                     <p className="top__store__slide__ttl font-minervamodern">AOYAMA STORE, café and terrace</p>
                     <div className="img">
                       <a href="/?mode=f4#aoyama">
-                      <img src="https://img07.shop-pro.jp/PA01461/818/etc/store_aoyama.jpg?cmsp_timestamp=20220920115317" width="170" />
+                      <img src="https://img07.shop-pro.jp/PA01461/818/etc/store_aoyama.jpg?cmsp_timestamp=20220920115317" width="170" alt="画像"  />
                       </a>
                     </div>
-                    <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_store_aoyama.svg" className="top__store__slide__bgtxt" width="225" />
+                    <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_store_aoyama.svg" className="top__store__slide__bgtxt" width="225" alt="画像"  />
                   </SwiperSlide>
                   <SwiperSlide className="swiper-slide">
                     <p className="top__store__slide__ttl font-minervamodern">Shinjuku STORE & pickup</p>
                     <div className="img">
                       <a href="/?mode=f4#shinjuku">
-                      <img src="https://img07.shop-pro.jp/PA01461/818/etc/store_shinjyuku1018_v2.jpg?cmsp_timestamp=20221018184522" width="170" />
+                      <img src="https://img07.shop-pro.jp/PA01461/818/etc/store_shinjyuku1018_v2.jpg?cmsp_timestamp=20221018184522" width="170" alt="画像"  />
                       </a>
                     </div>
-                    <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_store_shinjuku.svg" className="top__store__slide__bgtxt" width="225" />
+                    <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_store_shinjuku.svg" className="top__store__slide__bgtxt" width="225" alt="画像"  />
                   </SwiperSlide>
                   
                 {/*<div className="top__store__slide__btns">
@@ -216,7 +219,7 @@ const Home = () => {
                   </div>
                 </div>*/}
               </Swiper>
-              <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_store.svg" width="825" className="top__store__bgtxt" />
+              <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_store.svg" width="825" className="top__store__bgtxt" alt="画像"  />
             </div>
           </section>	
           <section className="top__newslist ttl_anim act">
@@ -248,13 +251,13 @@ const Home = () => {
               </h2>
               <div className="">
                 <ul className="insta_list top__instagram__ul ">
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/reel/CkP1eYNA61A/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.29350-15/312785036_1401511007044593_4040544817137242914_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=A6T-H7SI-FwAX_5MYIr&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfAjmAR2eQl1kz4we1PN5K_8L8aN80y-qdnqJQ0wc6hAvA&amp;oe=63695146" /></a></li>
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/p/CkNvapmL6xT/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/312814755_1267457737373827_3896374972202093947_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=A1qJyAhCMZsAX-30Kbo&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfBAfNq_aJYjdNfnR44NDuyZ7DTqf8s85VRJ_y03vOKsCg&amp;oe=636A99CF" /></a></li>
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/reel/CkFBCkGJ8Q4/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.29350-15/306544235_3342888585981656_6730518387315700015_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=uQNYtpL4NFsAX9sIbqx&amp;_nc_oc=AQk0Uv7ZF8fgmfX3d6fFFFbQjrcwpKEEbpFmA01laRQC-xMlscWjT2vAcS7akvZrJb4&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfDPmO44McVpQTLmiiusdaBPg8OMlmV6wJv-Z9qn1E-j1g&amp;oe=63693C92" /></a></li>
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/p/Cj-So95PIH7/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/312074347_1174437486616309_8025921210695619612_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=nm-fyWy5yFQAX-h8BHF&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfDv-56hdV1pYvdZR-usgGwjr22gNDZtPzKYg2LTyPEgYA&amp;oe=6368F91B" /></a></li>
+                  <li className="top__instagram__li"><a href="https://www.instagram.com/reel/CkP1eYNA61A/" target="_blank" rel="noreferrer"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.29350-15/312785036_1401511007044593_4040544817137242914_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=A6T-H7SI-FwAX_5MYIr&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfAjmAR2eQl1kz4we1PN5K_8L8aN80y-qdnqJQ0wc6hAvA&amp;oe=63695146" alt="画像" /></a></li>
+                  <li className="top__instagram__li"><a href="https://www.instagram.com/p/CkNvapmL6xT/" target="_blank" rel="noreferrer"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/312814755_1267457737373827_3896374972202093947_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=A1qJyAhCMZsAX-30Kbo&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfBAfNq_aJYjdNfnR44NDuyZ7DTqf8s85VRJ_y03vOKsCg&amp;oe=636A99CF" alt="画像" /></a></li>
+                  <li className="top__instagram__li"><a href="https://www.instagram.com/reel/CkFBCkGJ8Q4/" target="_blank" rel="noreferrer"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.29350-15/306544235_3342888585981656_6730518387315700015_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=uQNYtpL4NFsAX9sIbqx&amp;_nc_oc=AQk0Uv7ZF8fgmfX3d6fFFFbQjrcwpKEEbpFmA01laRQC-xMlscWjT2vAcS7akvZrJb4&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfDPmO44McVpQTLmiiusdaBPg8OMlmV6wJv-Z9qn1E-j1g&amp;oe=63693C92" alt="画像" /></a></li>
+                  <li className="top__instagram__li"><a href="https://www.instagram.com/p/Cj-So95PIH7/" target="_blank" rel="noreferrer"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/312074347_1174437486616309_8025921210695619612_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=nm-fyWy5yFQAX-h8BHF&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfDv-56hdV1pYvdZR-usgGwjr22gNDZtPzKYg2LTyPEgYA&amp;oe=6368F91B" alt="画像" /></a></li>
                 </ul>
               </div>
-              <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_follow_us.svg" className="top__instagram__bgtxt" />
+              <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_follow_us.svg" className="top__instagram__bgtxt" alt="画像"  />
             </section>
         </div>
 

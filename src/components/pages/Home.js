@@ -60,11 +60,47 @@ const params3 = {
   }
 }
 
-const Home = () => {
-  const topAboutRef = useRef(null);
-  
+function InstagramList() {
+  const InstagramListRef = useRef();
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [items, setItems] = useState([]);
+
   useEffect(() => {
-      
+    /*
+    fetch("https://graph.facebook.com/v5.0/17841421692100141?fields=name%2Cmedia.limit(4)%7Bcaption%2Clike_count%2Cmedia_url%2Cpermalink%2Ctimestamp%2Cthumbnail_url%2Cmedia_type%2Cusername%7D&access_token=EAAFoqmk5AR0BADYRqPWkfo8oVmkoqrjEwvZB7ANhqnZC1SmbYNkPmrOLABBskhrrjjbRUCqAxHji6fQpkyoFIf5Wwv39ucqH8ABaKmLpetPNMuMppZCeuCmE2eWroEZBayrpiLWLVLRzRruZA6T1rmEvJjm6ECWQArj0yWCWzZBZCf7YRF2mndZA1uJ2ZBHgCyGaZBVb9zFk4ErZBeAZAdJOuAidPFeD8d0U1fUpKSHYIkcR4AZDZD")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setItems(result.media.data);
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      )
+      */
+  }, [InstagramListRef])
+  return (
+    <ul ref={InstagramListRef} className="insta_list top__instagram__ul ">
+      {items.map(item => (
+        <li className="top__instagram__li" key={item.id}>
+          <a href={item.permalink} target="_blank">
+            {item.media_type == "IMAGE" ? <img src={item.media_url} /> : <img src={item.thumbnail_url} />}
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function TopAbout() {
+  const topAboutRef = useRef(null);
+  useEffect(() => {
       gsap.fromTo( 
         '#top__about__img',
         { opacity: 0 }, //fromの設定
@@ -99,6 +135,38 @@ const Home = () => {
       })
       topAboutTxt.from("#top__about__txt",  { yPercent: 20}, 0).to("#top__about__txt",  { yPercent: 0}, 0)
   }, [])
+  return (
+    <section id="top__about" className="top__about ttl_anim act" ref={topAboutRef}>
+      <h3 className="top__about__ttl sp font-minervamodern">
+        <span>About</span>
+        <span>Gontran</span>
+        <span>Cherrier</span>
+      </h3>
+      <div id="top__about__img" className="top__about__img">
+        <div className="top__about__img__wrap ttl_anim_img">
+          <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01.jpg?cmsp_timestamp=20220920115317" className="pc" width="535" />
+          <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
+        </div>
+        <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_about.svg" className="top__about__img__bgtxt" />
+      </div>
+      <div id="top__about__txt" className="top__about__txt">
+        <h3 className="top__about__txt__h3 font-minervamodern ttl_anim_h2">
+          <span className="ttl_anim_h2_span">
+            About<br />
+            Gontran Cherrier
+          </span>
+        </h3>
+        <p className="top__about__txt__p ttl_anim_p">
+          ゴントラン・シェリエ氏は、フランス・ノルマンディー出身の4代目ブーランジェです。同氏は、Ferrandi Culinary schoolとLes Grands Moulins de Parisという二つの著名な調理学校を卒業後、Alain Passard 氏の手掛ける3つ星レストラン L’ArpegeやAlain Senderens氏のLucas Cartonで勤めたのち、2010年に自身のブーランジェリーをフランス・パリ（モンマルトル）にオープンさせました。その人気はフランスにとどまらずアジア・北米・中東でも約60店舗を展開するまでに至り、各国の人々に親しまれています。
+        </p>
+        <a href="/?mode=f1" className="btn_bk font-minervamodern"><span>MORE DETAIL</span></a>
+      </div>
+    </section>
+  );
+}
+
+const Home = () => {
+
 
   return (
     <>
@@ -149,32 +217,8 @@ const Home = () => {
             </SwiperSlide>
           </Swiper>
         </section>
-        <section id="top__about" className="top__about ttl_anim act" ref={topAboutRef}>
-          <h3 className="top__about__ttl sp font-minervamodern">
-            <span>About</span>
-            <span>Gontran</span>
-            <span>Cherrier</span>
-          </h3>
-          <div id="top__about__img" className="top__about__img">
-            <div className="top__about__img__wrap ttl_anim_img">
-              <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01.jpg?cmsp_timestamp=20220920115317" className="pc" width="535" />
-              <img src="https://img07.shop-pro.jp/PA01461/818/etc/top_about01_sp.jpg?cmsp_timestamp=20220920115317" className="sp" />
-            </div>
-            <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_about.svg" className="top__about__img__bgtxt" />
-          </div>
-          <div id="top__about__txt" className="top__about__txt">
-            <h3 className="top__about__txt__h3 font-minervamodern ttl_anim_h2">
-              <span className="ttl_anim_h2_span">
-                About<br />
-                Gontran Cherrier
-              </span>
-            </h3>
-            <p className="top__about__txt__p ttl_anim_p">
-              ゴントラン・シェリエ氏は、フランス・ノルマンディー出身の4代目ブーランジェです。同氏は、Ferrandi Culinary schoolとLes Grands Moulins de Parisという二つの著名な調理学校を卒業後、Alain Passard 氏の手掛ける3つ星レストラン L’ArpegeやAlain Senderens氏のLucas Cartonで勤めたのち、2010年に自身のブーランジェリーをフランス・パリ（モンマルトル）にオープンさせました。その人気はフランスにとどまらずアジア・北米・中東でも約60店舗を展開するまでに至り、各国の人々に親しまれています。
-            </p>
-            <a href="/?mode=f1" className="btn_bk font-minervamodern"><span>MORE DETAIL</span></a>
-          </div>
-        </section>
+        <TopAbout />
+
         <div className="top__wrap_online_news ">
           <section className="top__store ttl_anim act">
             <div className="top__store__wrap">
@@ -247,12 +291,7 @@ const Home = () => {
                 </span>
               </h2>
               <div className="">
-                <ul className="insta_list top__instagram__ul ">
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/reel/CkP1eYNA61A/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.29350-15/312785036_1401511007044593_4040544817137242914_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=A6T-H7SI-FwAX_5MYIr&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfAjmAR2eQl1kz4we1PN5K_8L8aN80y-qdnqJQ0wc6hAvA&amp;oe=63695146" /></a></li>
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/p/CkNvapmL6xT/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/312814755_1267457737373827_3896374972202093947_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=A1qJyAhCMZsAX-30Kbo&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfBAfNq_aJYjdNfnR44NDuyZ7DTqf8s85VRJ_y03vOKsCg&amp;oe=636A99CF" /></a></li>
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/reel/CkFBCkGJ8Q4/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.29350-15/306544235_3342888585981656_6730518387315700015_n.jpg?_nc_cat=110&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=uQNYtpL4NFsAX9sIbqx&amp;_nc_oc=AQk0Uv7ZF8fgmfX3d6fFFFbQjrcwpKEEbpFmA01laRQC-xMlscWjT2vAcS7akvZrJb4&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfDPmO44McVpQTLmiiusdaBPg8OMlmV6wJv-Z9qn1E-j1g&amp;oe=63693C92" /></a></li>
-                  <li className="top__instagram__li"><a href="https://www.instagram.com/p/Cj-So95PIH7/" target="_blank"><img src="https://scontent-nrt1-1.cdninstagram.com/v/t51.2885-15/312074347_1174437486616309_8025921210695619612_n.jpg?_nc_cat=105&amp;ccb=1-7&amp;_nc_sid=8ae9d6&amp;_nc_ohc=nm-fyWy5yFQAX-h8BHF&amp;_nc_ht=scontent-nrt1-1.cdninstagram.com&amp;edm=AL-3X8kEAAAA&amp;oh=00_AfDv-56hdV1pYvdZR-usgGwjr22gNDZtPzKYg2LTyPEgYA&amp;oe=6368F91B" /></a></li>
-                </ul>
+                <InstagramList />
               </div>
               <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_follow_us.svg" className="top__instagram__bgtxt" />
             </section>

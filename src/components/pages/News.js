@@ -1,38 +1,45 @@
-import React from 'react';
-import * as contentful from 'contentful';
+import React from "react";
+import Head from "../block/Head"
+import { Link } from "react-router-dom";
 
-class News extends React.Component{
+import { usePosts } from "../custom-hooks/index";
+import { readableDate } from "../helpers"
 
-  client = contentful.createClient({
-    space: "7mp6ca7ra6f0",
-    accessToken: "83FRAKYBlcczHXvv9NXzFiPCh1pQuxyXrY3Qy52Nilg"
-  });
+export default function Posts() {
+  const [posts, isLoading] = usePosts();
 
-  state = {
-    items: []
-  }
+  const renderPosts = () => {
+    if (isLoading) return <p>Loading...</p>;
+    return posts.map(post => (
+      
+      <Link
+        className="posts__post"
+        key={post.fields.slug}
+        to={post.fields.slug}
+      >
+        <div className="posts__post__img__container">
+          <img
+            className="posts__post__img__container__img"
+            src={post.fields.heroImage.fields.file.url}
+            alt={post.fields.title}
+          />
+        </div>
+        <small>{readableDate(post.fields.date)}</small>
+        <h3>{post.fields.title}</h3>
 
-  componentDidMount = () => {
-    this.client.getEntries()
-    .then((response) => {
-      this.setState({
-        items: response.items
-      });
-    });
-  }
+        <p>{post.fields.description}</p>
+      </Link>
+    ));
+  };
 
-  render(){
-    return (
-      <div>
-        {
-          this.state.items.map((item) => (
-            <li>{item.fields.title}</li>
-           ))
-        }
+  return (
+    <>
+      <Head title="News" />
+      <div className="posts__container">
+        <h2>Articles</h2>
+
+        <div className="posts">{renderPosts()}</div>
       </div>
-    );  
-  }
+    </>
+  );
 }
-
-
-export default News;

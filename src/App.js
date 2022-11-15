@@ -13,6 +13,7 @@ import About from "./components/pages/About";
 import Test from "./components/pages/Test";
 import Scroll from "./components/pages/Scroll";
 import News from "./components/pages/News";
+import SinglePost from "./components/pages/SinglePost";
 
 import './App.scss';
 import './scss/style.scss';
@@ -30,6 +31,7 @@ const App = () => {
           <Route path={"/test/"} element={<Test />} />
           <Route path={"/scroll/"} element={<Scroll />} />
           <Route path={"/news/"} element={<News />} />
+          <Route path={"/news/:id"} element={<SinglePost />} />
         </Routes>
         </main>
       </AnimatePresence>

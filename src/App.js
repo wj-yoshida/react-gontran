@@ -12,6 +12,7 @@ import About from "./components/pages/About";
 
 import Test from "./components/pages/Test";
 import Scroll from "./components/pages/Scroll";
+import News from "./components/pages/News";
 
 import './App.scss';
 import './scss/style.scss';
@@ -28,6 +29,7 @@ const App = () => {
           <Route path={"/about/"} element={<About />} />
           <Route path={"/test/"} element={<Test />} />
           <Route path={"/scroll/"} element={<Scroll />} />
+          <Route path={"/news/"} element={<News />} />
         </Routes>
         </main>
       </AnimatePresence>

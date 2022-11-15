@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { usePosts } from "../custom-hooks/index";
 import { readableDate } from "../helpers"
 
+import {motion} from "framer-motion";
+
 export default function Posts() {
   const [posts, isLoading] = usePosts();
 
@@ -34,12 +36,19 @@ export default function Posts() {
 
   return (
     <>
+      <motion.div
+          animate={{ opacity:1 }}
+          initial={{ opacity:0 }}
+          exit={{ opacity:0 }}
+          transition={{ duration: 0.4}}
+        >
       <Head title="News" />
-      <div className="posts__container">
-        <h2>Articles</h2>
+        <div className="posts__container">
+          <h2>Articles</h2>
 
-        <div className="posts">{renderPosts()}</div>
-      </div>
+          <div className="posts">{renderPosts()}</div>
+        </div>
+      </motion.div>
     </>
   );
 }

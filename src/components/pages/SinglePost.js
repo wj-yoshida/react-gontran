@@ -6,6 +6,8 @@ import { Link, useParams } from "react-router-dom";
 import { useSinglePost } from "../custom-hooks/index";
 import { readableDate } from "../helpers";
 
+import {motion} from "framer-motion";
+
 function RenderPost() {
   const { id } = useParams();
   const [post, isLoading] = useSinglePost(id);
@@ -40,13 +42,20 @@ function RenderPost() {
 const News = () => {
   return (
     <>
-      <div className="post">
-        <Link className="post__back" to="/news">
-          {"< Back"}
-        </Link>
+      <motion.div
+          animate={{ opacity:1 }}
+          initial={{ opacity:0 }}
+          exit={{ opacity:0 }}
+          transition={{ duration: 0.4}}
+        >
+        <div className="post">
+          <Link className="post__back" to="/news">
+            {"< Back"}
+          </Link>
 
-        <RenderPost />
-      </div>
+          <RenderPost />
+        </div>
+      </motion.div>
     </>
   );
 };

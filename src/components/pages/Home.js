@@ -99,7 +99,6 @@ function InstagramList() {
 }
 
 function TopAbout() {
-  const topAboutRef = useRef(null);
   useEffect(() => {
       gsap.fromTo( 
         '#top__about__img',
@@ -123,7 +122,7 @@ function TopAbout() {
           start: '25% center', //要素のトップが、画面の中央まできたら開始
           end: '75% center', //要素のボトムが、画面の中央まできたら終了
           scrub: 1,
-          markers: true,
+          //markers: true,
           /*
           snap: {
             snapTo: "labels", // snap to the closest label in the timeline
@@ -136,7 +135,7 @@ function TopAbout() {
       topAboutTxt.from("#top__about__txt",  { yPercent: 20}, 0).to("#top__about__txt",  { yPercent: 0}, 0)
   }, [])
   return (
-    <section id="top__about" className="top__about ttl_anim act" ref={topAboutRef}>
+    <section id="top__about" className="top__about ttl_anim act">
       <h3 className="top__about__ttl sp font-minervamodern">
         <span>About</span>
         <span>Gontran</span>

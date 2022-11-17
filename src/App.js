@@ -12,9 +12,13 @@ import About from "./components/pages/About";
 
 import Test from "./components/pages/Test";
 import Scroll from "./components/pages/Scroll";
+import HooksTuto from "./components/pages/HooksTutorial";
+
+
 
 import './App.scss';
 import './scss/style.scss';
+
 
 const App = () => {
   return (
@@ -28,6 +32,7 @@ const App = () => {
           <Route path={"/about/"} element={<About />} />
           <Route path={"/test/"} element={<Test />} />
           <Route path={"/scroll/"} element={<Scroll />} />
+          <Route path={"/hooks-tutorial/"} element={<HooksTuto />} />
         </Routes>
         </main>
       </AnimatePresence>

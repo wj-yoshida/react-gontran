@@ -14,8 +14,9 @@ export const Header = () => {
             </div>
             <ul className="header__nav">
                 <li className="header__nav__li"><Link to={"/about/"}className="font-minervamodern">GONTRAN CHERRIER</Link></li>
-                
                 <li className="header__nav__li"><Link to={"/location/"} className="font-minervamodern">LOCATION</Link></li>
+                <li className="header__nav__li"><Link to={"/test/"} className="font-minervamodern">TEST</Link></li>
+                <li className="header__nav__li"><Link to={"/hooks-tutorial/"} className="font-minervamodern">Hooks</Link></li>
             </ul>
             <h1 className="header__logo common_logo">
                 <Link to={"/"}>
@@ -59,7 +60,7 @@ export const Header = () => {
                 <ul className="gnav__sub">
                     <li className="gnav__sub__li">
                         <span className="gnav__sub__ttl font-minervamodern">Follow us</span>
-                        <a href="https://www.instagram.com/gontrancherrierjp/" className="gnav__sub__a" target="_blank">インスタグラム</a>
+                        <a href="https://www.instagram.com/gontrancherrierjp/" className="gnav__sub__a" target="_blank" rel="noreferrer">インスタグラム</a>
                     </li>
                 </ul>
             </div>	

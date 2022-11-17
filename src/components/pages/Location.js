@@ -1,4 +1,4 @@
-import React,{ useEffect } from 'react';
+import React,{ useEffect, useState } from 'react';
 import Head from "../block/Head"
 
 import SwiperCore, { Autoplay } from 'swiper'
@@ -8,20 +8,15 @@ import 'swiper/swiper-bundle.css';
 SwiperCore.use([Autoplay])
 
 
-import {motion} from "framer-motion";
-
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
-/* eslint-disable import/first */
-import '../../scss/store.scss';
 
-import { GoogleMapWorld } from '../block/Map';
+import GoogleMap from '../block/Map';
 
-const Register = () => {
+const Location = () => {
 
   useEffect(() => {
-    
     const ttl_anim_elems = document.getElementsByClassName('ttl_anim');
     for (let i = 0; i < ttl_anim_elems.length; i++) {
     gsap.to(ttl_anim_elems[i], {
@@ -34,7 +29,6 @@ const Register = () => {
     }
     }); 
     }
-    
   }, [])
 
   const params1 = {
@@ -52,17 +46,13 @@ const Register = () => {
     }
   }
 
-
+  useEffect(()=>{
+    console.log("local effect");
+  }, [])
 
   return (
     <>
       <Head title="店舗所在地 - ゴントラン シェリエ ジャポン" />
-      <motion.div
-        animate={{ opacity:1 }}
-        initial={{ opacity:0 }}
-        exit={{ opacity:1 }}
-        transition={{ duration: 0.4}}
-      >
       <div className="store_page">
         <section className="common__head ttl_anim"> <a className="common__head__sidelink sidelink__left font-minervamodern" href="/?mode=cate&csid=0&cbid=2750575">ONLINE STORE</a>
           <div className="common__head__kv">
@@ -70,6 +60,7 @@ const Register = () => {
               <div className="common__head__kv__txt "> <img src="https://file003.shop-pro.jp/PA01461/818/svg/ttl_store.svg" alt="about" className="common__head__kv__txt__imgttl ttl_anim_p" />
                 <h1 className="common__head__kv__txt__ttl font-minervamodern ttl_anim_p">Store list<span className="hide_sp"> & </span><br className="sp" />location</h1>
                 <p className="common__head__kv__txt__subttl ttl_anim_p2">店舗一覧・所在地</p>
+                
               </div>
               <div className="common__head__kv__img">
                 <img src="https://img07.shop-pro.jp/PA01461/818/etc/kv_store.jpg?cmsp_timestamp=20220920121304" className="pc" alt="gontran" />
@@ -81,6 +72,8 @@ const Register = () => {
             </div>
             <a className="common__head__sidelink sidelink__right font-minervamodern" href="https://www.instagram.com/gontrancherrierjp/" target="_blank" rel="noreferrer">FOLLOW US ON INSTAGRAM</a>
         </section>
+
+
         <section className="store__news ttl_anim">
           <h2 className="font-minervamodern ttl_anim_h2"> <span className="ttl_anim_h2_span">
               Enjoy our store, café and<br />a croissant
@@ -187,7 +180,7 @@ const Register = () => {
         <section className="store__map">
           <h2 className="store__map__store__ttl"> <span className="en font-minervamodern">Our store in the world</span> <span className="ja">世界各地の店舗</span> </h2>
           <div id="map" className="store__map__base">
-            <GoogleMapWorld></GoogleMapWorld>
+            <GoogleMap></GoogleMap>
           </div>
           {/*<div className="store__map__store__slide swiper-container ttl_anim">
             <div className="swiper-wrapper">
@@ -229,9 +222,9 @@ const Register = () => {
           </div>*/}
         </section>
       </div>
-      </motion.div>
     </>
   );
 };
+export default Location;
 
-export default Register;
+

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import {motion} from "framer-motion";
-
+import Head from "../block/Head"
 import '../../test.scss';
 
 function Square(props) {
@@ -104,7 +103,7 @@ class Game extends React.Component {
     let status;
     if (winner) {
       status = "Winner: " + winner;
-    }else if(this.state.stepNumber==9){
+    }else if(this.state.stepNumber===9){
       status = "Draw";
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
@@ -152,6 +151,7 @@ function calculateWinner(squares) {
 const Test = () => {
   return (
     <>
+    <Head title="テスト" />
       <motion.div
         animate={{ opacity:1 }}
         initial={{ opacity:0 }}

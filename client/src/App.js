@@ -14,10 +14,13 @@ import Test from "./components/pages/Test";
 import Scroll from "./components/pages/Scroll";
 import News from "./components/pages/News";
 import SinglePost from "./components/pages/SinglePost";
+import Chat from "./components/pages/Chat";
+import ChatLogin from "./components/pages/ChatLogin";
+import socketIO from 'socket.io-client';
 
 import './App.scss';
 import './scss/style.scss';
-
+const socket = socketIO.connect('http://localhost:4001');
 const App = () => {
   return (
     <BrowserRouter>
@@ -32,6 +35,8 @@ const App = () => {
           <Route path={"/scroll/"} element={<Scroll />} />
           <Route path={"/news/"} element={<News />} />
           <Route path={"/news/:id"} element={<SinglePost />} />
+          <Route path={"/chat"} element={<Chat socket={socket} />} />
+          <Route path={"/chatlogin"} element={<ChatLogin socket={socket} />} />
         </Routes>
         </main>
       </AnimatePresence>

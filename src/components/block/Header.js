@@ -20,8 +20,8 @@ export const Header = () => {
             </ul>
             <h1 className="header__logo common_logo">
                 <Link to={"/"}>
-                    <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo.svg" alt="logo" className="bk_logo" />
-                    <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo_wh.svg" alt="logo" className="wh_logo" />
+                    <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo.svg" alt="logo" className="bk_logo"  width="44" />
+                    <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo_wh.svg" alt="logo" className="wh_logo" width="44" />
                 </Link>
             </h1>
             <div className="header__account">

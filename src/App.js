@@ -27,7 +27,7 @@ const App = () => {
       <AnimatePresence exitBeforeEnter initial={true}>
         <main id="page-wrapper">
         <Routes>
-          <Route path={"/"} element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path={"/location/"} element={<Location />} />
           <Route path={"/about/"} element={<About />} />
           <Route path={"/test/"} element={<Test />} />

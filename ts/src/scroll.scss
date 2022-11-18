@@ -1,0 +1,38 @@
+div.box {
+    position: relative;
+    left: 50%;
+    width: 400px;
+    height: 200px;
+    margin-left: -420px;
+    margin-bottom: 30px;
+    
+    background-color: rgba(22, 22, 22, 1);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 200px;
+  }
+  
+  .scroll ul {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    width: 300px;
+    height: 170px;
+    margin: -85px -400px 0 0;
+    padding: 40px;
+    border: 1px solid black;
+  }
+  
+  .scroll li {
+    margin-bottom: 10px;
+  }
+  
+  .scroll span.false {
+    color: red;
+  }
+  
+  .scroll span.true {
+    color: green;
+  }

@@ -1,0 +1,96 @@
+.text_page_body{
+    background-color: #EAEAE9;
+}
+.text_page{
+    padding-top: 120px;
+    padding-bottom: 150px;
+    counter-reset: number 0;
+    h2{
+        margin-bottom: 100px;
+        margin-top: 200px;
+        &:nth-of-type(1){
+            margin-top: 0;
+        }
+        .en{
+            font-size: 60px;
+            text-align: center;
+            display: block;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .ja{
+            font-size: 24px;
+            text-align: center;
+            display: block;
+        }
+    }
+    &__contents{
+        max-width: 700px;
+        padding: 0 20px;
+        width: 100%;
+        margin: auto;
+    }
+    &__section{
+        
+        position: relative;
+        margin-top: 50px;
+        &:nth-of-type(1){
+            margin-top: 0;
+        }
+        &.num{
+            padding-left: 25px;
+            counter-increment: number 1;
+            &:before{
+                content: counter(number) ".";
+                position: absolute;
+                left: 0;
+                top: 7px;
+                font-size: 14px;
+            }
+        }
+        
+        h3{
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 2;
+            
+        }
+        p{
+            font-size: 14px;
+            line-height: 2;
+        }
+    }
+    &__dot_list{
+        li{
+            padding-left: 15px;
+            position: relative;
+            font-size: 14px;
+            line-height: 2;
+            &:before{
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 13px;
+                width: 3px;
+                height: 3px;
+                border-radius: 100%;
+                background-color: #000;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 428px){
+    .text_page {
+        padding-top: 80px;
+        h2 {
+            .en{
+                font-size: 40px;
+                margin-bottom: 20px;
+            }
+            .ja{
+                font-size: 22px;
+            }
+        }
+    }
+}

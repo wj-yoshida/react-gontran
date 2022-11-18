@@ -1,18 +1,58 @@
-import React from 'react';
+import React,{ useEffect, useState } from 'react';
 import Head from "../block/Head"
-import { Link } from "react-router-dom";
-import {motion} from "framer-motion";
 
-import '../../Location.css';
-const Register = () => {
+import SwiperCore, { Autoplay } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/react';
+/* eslint-disable import/first */
+import 'swiper/swiper-bundle.css';
+SwiperCore.use([Autoplay])
+
+
+import { gsap } from "gsap";
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
+import GoogleMap from '../block/Map';
+
+const Location = () => {
+
+  useEffect(() => {
+    const ttl_anim_elems = document.getElementsByClassName('ttl_anim');
+    for (let i = 0; i < ttl_anim_elems.length; i++) {
+    gsap.to(ttl_anim_elems[i], {
+    scrollTrigger: {
+      trigger: ttl_anim_elems[i],
+      start: "top 50%",
+      toggleClass: { targets: ttl_anim_elems[i], className: "act" },
+      once: true,
+      //markers: true
+    }
+    }); 
+    }
+  }, [])
+
+  const params1 = {
+    loop: true,
+    speed: 1000,
+    autoplay: {
+        delay: 5000,
+    },
+    slidesPerView: 1,
+    longSwipesRatio: 0.01,
+    longSwipesMs: 100,
+    navigation: {
+        nextEl: '.swiper_next01',
+        prevEl: '.swiper_prev01'
+    }
+  }
+
+  useEffect(()=>{
+    console.log("local effect");
+  }, [])
+
   return (
     <>
-      <motion.div
-        animate={{ opacity:1 }}
-        initial={{ opacity:0 }}
-        exit={{ opacity:0 }}
-        transition={{ duration: 0.4}}
-      >
+      <Head title="店舗所在地 - ゴントラン シェリエ ジャポン" />
       <div className="store_page">
         <section className="common__head ttl_anim"> <a className="common__head__sidelink sidelink__left font-minervamodern" href="/?mode=cate&csid=0&cbid=2750575">ONLINE STORE</a>
           <div className="common__head__kv">
@@ -20,17 +60,20 @@ const Register = () => {
               <div className="common__head__kv__txt "> <img src="https://file003.shop-pro.jp/PA01461/818/svg/ttl_store.svg" alt="about" className="common__head__kv__txt__imgttl ttl_anim_p" />
                 <h1 className="common__head__kv__txt__ttl font-minervamodern ttl_anim_p">Store list<span className="hide_sp"> & </span><br className="sp" />location</h1>
                 <p className="common__head__kv__txt__subttl ttl_anim_p2">店舗一覧・所在地</p>
+                
               </div>
               <div className="common__head__kv__img">
-                <img src="https://img07.shop-pro.jp/PA01461/818/etc/kv_store.jpg?cmsp_timestamp=20220920121304" className="pc" />
-                <img src="https://img07.shop-pro.jp/PA01461/818/etc/kv_store_sp.jpg?cmsp_timestamp=20220920121304" className="sp" />
+                <img src="https://img07.shop-pro.jp/PA01461/818/etc/kv_store.jpg?cmsp_timestamp=20220920121304" className="pc" alt="gontran" />
+                <img src="https://img07.shop-pro.jp/PA01461/818/etc/kv_store_sp.jpg?cmsp_timestamp=20220920121304" className="sp" alt="gontran" />
               </div>
             </div>
             <a href="/" className="common__head__kv__logo pc">
-              <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo.svg" /></a>
+              <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo.svg" alt="画像"/></a>
             </div>
-            <a className="common__head__sidelink sidelink__right font-minervamodern" href="https://www.instagram.com/gontrancherrierjp/" target="_blank">FOLLOW US ON INSTAGRAM</a>
+            <a className="common__head__sidelink sidelink__right font-minervamodern" href="https://www.instagram.com/gontrancherrierjp/" target="_blank" rel="noreferrer">FOLLOW US ON INSTAGRAM</a>
         </section>
+
+
         <section className="store__news ttl_anim">
           <h2 className="font-minervamodern ttl_anim_h2"> <span className="ttl_anim_h2_span">
               Enjoy our store, café and<br />a croissant
@@ -39,6 +82,44 @@ const Register = () => {
 
           </div>
 
+        </section>
+        <section className="store__list ttl_anim">
+          <div className="store__list__location ttl_anim_p" id="aoyama"> <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_store_aoyama_bk.svg" className="store__list__svg pc" alt="画像" />
+            <div className="store__list__location__wrap">
+              <div className="store__list__img">
+                <Swiper className="imgswiper imgswiper01" {...params1}>
+                  <SwiperSlide>
+                    <div className="img_bg" style={{backgroundImage: "url(https://img07.shop-pro.jp/PA01461/818/etc/store_aoyama_01.jpg?cmsp_timestamp=20220920121752)"}}></div>
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <div className="img_bg" style={{backgroundImage: "url(https://img07.shop-pro.jp/PA01461/818/etc/store_aoyama_02.jpg?cmsp_timestamp=20220920121752)"}}></div>
+                  </SwiperSlide>
+                  <SwiperSlide >
+                    <div className="img_bg" style={{backgroundImage: "url(https://img07.shop-pro.jp/PA01461/818/etc/store_aoyama_03.jpg?cmsp_timestamp=20220920121752)"}}></div>
+                  </SwiperSlide>
+                  <SwiperSlide >
+                    <div className="img_bg" style={{backgroundImage: "url(https://img07.shop-pro.jp/PA01461/818/etc/store_aoyama_04.jpg?cmsp_timestamp=20220920121752)"}}></div>
+                  </SwiperSlide>
+                  <SwiperSlide >
+                    <div className="img_bg" style={{backgroundImage: "url(https://img07.shop-pro.jp/PA01461/818/etc/store_aoyama_05.jpg?cmsp_timestamp=20220920121752)"}}></div>
+                  </SwiperSlide>
+                  <div className="store__list__img__button_box">
+                    <div className="swiper-button-prev swiper_prev01"> <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20.7 13.9" xmlSpace="preserve"><polygon points="20.7,6.5 1.8,6.5 7.6,0.7 6.9,0 0,6.9 6.9,13.9 7.6,13.1 2,7.5 20.7,7.5 "/></svg> </div>
+                    <div className="swiper-button-next swiper_next01"> <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20.7 13.9" xmlSpace="preserve"><polygon points="13.8,0 13.1,0.7 18.7,6.3 0,6.3 0,7.3 18.9,7.3 13.1,13.1 13.8,13.9 20.7,6.9 "/></svg> </div>
+                  </div>
+                
+                </Swiper>
+              </div>
+              <div className="store__list__txt "> <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_store_aoyama_bk.svg" className="store__list__svg sp" alt="画像" />
+                <h3 className="store__list__txt__ttl">ゴントラン シェリエ 青山店</h3>
+                <p className="store__list__txt__address">〒150-0001 東京都渋谷区神宮前5丁目51-8 1階～2階 ラ・ポルト青山1F・2F</p>
+                <div className="store__list__txt__time-tel font-minervamodern">
+                  <p className="store__list__txt__time-tel__time">Open 7:30-19:30</p>
+                  <p className="store__list__txt__time-tel__tel"> <span className="store__list__txt__time-tel__tel__icon"><img src="https://file003.shop-pro.jp/PA01461/818/svg/icon_phone.svg"  alt="画像" /></span> <span className="store__list__txt__time-tel__tel__number"><a href="tel:03-6450-6184">03-6450-6184</a></span> </p>
+                </div>
+                <p className="store__list__txt__p"> 1階：ベーカリー（テラス14席あり）、テイクアウェイコーナー（フレンチクレープ、ワッフル、ソフトクリーム）。<br /> 2階：カフェ（34席）。各種ドリンク、パンに合うライトミールの他、アルコールもお楽しみいただけます。 </p> <a href="https://goo.gl/maps/X4jJ6mv2KfaFGzTq7" target="_blank" className="btn_bk font-minervamodern" rel="noreferrer">OPEN MAP</a> </div>
+            </div>
+          </div>
         </section>
         {/*<section className="store__list ttl_anim">
           <div className="store__list__location ttl_anim_p" id="aoyama"> <img src="https://file003.shop-pro.jp/PA01461/818/svg/txt_store_aoyama_bk.svg" className="store__list__svg pc" />
@@ -95,10 +176,13 @@ const Register = () => {
             </div>
           </div>
         </section>
+        */}
         <section className="store__map">
           <h2 className="store__map__store__ttl"> <span className="en font-minervamodern">Our store in the world</span> <span className="ja">世界各地の店舗</span> </h2>
-          <div id="map" className="store__map__base"></div>
-          <div className="store__map__store__slide swiper-container ttl_anim">
+          <div id="map" className="store__map__base">
+            <GoogleMap></GoogleMap>
+          </div>
+          {/*<div className="store__map__store__slide swiper-container ttl_anim">
             <div className="swiper-wrapper">
               <div className="swiper-slide">
                 <p className="store__map__store__slide__ttl">フランス</p>
@@ -135,12 +219,12 @@ const Register = () => {
               <div className="swiper-button-prev btnprev__store"> <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 9" style="enable-background:new 0 0 36.1 9;" xmlSpace="preserve"><path d="M9,0l0.7,0.7L2.4,8h33.7v1H0L9,0z"/></svg> </div>
               <div className="swiper-button-next btnnext__store"> <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 36.1 9" style="enable-background:new 0 0 36.1 9;" xmlSpace="preserve"><path d="M36.1,9H0V8h33.7l-7.3-7.3L27.1,0L36.1,9z"/></svg> </div>
             </div>
-          </div>
-        </section>*/}
+          </div>*/}
+        </section>
       </div>
-      </motion.div>
     </>
   );
 };
+export default Location;
 
-export default Register;
+

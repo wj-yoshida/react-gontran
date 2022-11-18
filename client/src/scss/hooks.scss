@@ -1,0 +1,93 @@
+.hooksTutorial{
+    h1{
+        text-align: center;
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    h2{
+        text-align: center;
+    }
+    button{
+        background-color: #000;
+        border-radius: 2px;
+        color: #fff;
+        &.btn{
+            height: 50px;
+            width: 50px;
+            font-size: 45px;
+            line-height: 1;
+            
+            margin: auto;
+            display: block;
+            position: relative;
+            span{
+                position: absolute;
+                top: 45%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                display: block;
+            }
+        }
+        &.textBtn{
+            display: block;
+            font-size: 16px;
+            margin: auto;
+        }
+        &.textBtnAdd{
+            display: block;
+            font-size: 16px;
+        }
+    }
+    .ml{
+       &__10{
+            margin-left: 10px;
+       } 
+       &__20{
+            margin-left: 20px;
+       } 
+    }
+    .mb{
+       &__10{
+            margin-bottom: 10px !important;
+        }
+    }
+    .text{
+        &__center{
+            text-align: center;
+        }
+        &__desc{
+            text-align: center;
+        }
+        &__point{
+            font-size: 16px;
+        }
+    }
+    .col2{
+        display: flex;
+        justify-content: space-between;
+        &.center{
+            justify-content: center;
+            .btn{
+                margin: 0;
+            }
+            *:first-child{
+                margin-right: 20px;
+                padding: 0 15px;
+            }
+        }
+    }
+    input{
+        height: 50px;
+        border-radius: 1px;
+        border: 1px solid #000;
+    }
+    &__section{
+        max-width: 900px;
+        margin: 0 auto 50px;
+        padding: 20px;
+        border-top: 1px solid #555;
+        &:nth-of-type(1){
+            border-top: none;
+        }
+    }
+}

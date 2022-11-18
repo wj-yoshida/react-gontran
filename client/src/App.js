@@ -17,10 +17,14 @@ import SinglePost from "./components/pages/SinglePost";
 import Chat from "./components/pages/Chat";
 import ChatLogin from "./components/pages/ChatLogin";
 import socketIO from 'socket.io-client';
+import HooksTuto from "./components/pages/HooksTutorial";
+
+
 
 import './App.scss';
 import './scss/style.scss';
 const socket = socketIO.connect('http://localhost:4001');
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -28,11 +32,12 @@ const App = () => {
       <AnimatePresence exitBeforeEnter initial={true}>
         <main id="page-wrapper">
         <Routes>
-          <Route path={"/"} element={<Home />} />
+          <Route exact path="/" element={<Home />} />
           <Route path={"/location/"} element={<Location />} />
           <Route path={"/about/"} element={<About />} />
           <Route path={"/test/"} element={<Test />} />
           <Route path={"/scroll/"} element={<Scroll />} />
+          <Route path={"/hooks-tutorial/"} element={<HooksTuto />} />
           <Route path={"/news/"} element={<News />} />
           <Route path={"/news/:id"} element={<SinglePost />} />
           <Route path={"/chat"} element={<Chat socket={socket} />} />

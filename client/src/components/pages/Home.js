@@ -13,6 +13,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
+/* eslint-disable import/first */
+import '../../scss/top.scss';
+
 const params1 = {
   loop: true,
   slidesPerView: 1,

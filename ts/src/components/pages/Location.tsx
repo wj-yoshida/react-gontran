@@ -1,18 +1,13 @@
 import React from 'react';
 import Head from "../block/Head"
 import { Link } from "react-router-dom";
-import {motion} from "framer-motion";
+import { Loading } from '../block/Loading';
 
 import '../../Location.css';
 const Register = () => {
   return (
     <>
-      <motion.div
-        animate={{ opacity:1 }}
-        initial={{ opacity:0 }}
-        exit={{ opacity:0 }}
-        transition={{ duration: 0.4}}
-      >
+      <Loading />
       <div className="store_page">
         <section className="common__head ttl_anim"> <a className="common__head__sidelink sidelink__left font-minervamodern" href="/?mode=cate&csid=0&cbid=2750575">ONLINE STORE</a>
           <div className="common__head__kv">
@@ -138,7 +133,6 @@ const Register = () => {
           </div>
         </section>*/}
       </div>
-      </motion.div>
     </>
   );
 };

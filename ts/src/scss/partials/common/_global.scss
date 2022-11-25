@@ -1,3 +1,62 @@
+@use "sass:math";
 html {
   font-family: "游ゴシック体", "YuGothic", "游ゴシック", "Yu Gothic", -apple-system, BlinkMacSystemFont, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", sans-serif;
+}
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: calc(60vw + 60vh);
+  transform:  translate(-50%,-50%) rotate(45deg);
+  transform-origin: center;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 9999;
+  transition: all 1s ease;
+  &__box {
+    width: calc(3.5vw + 3.5vh);
+    height: calc(3.5vw + 3.5vh);
+    background-color: #fff;
+  }
+}
+
+@media (orientation: landscape) {
+  .loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 110vw;
+    transform:  translate(-50%,-50%) rotate(45deg);
+    transform-origin: center;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 9999;
+    transition: all 1s ease;
+    &__box {
+      width: calc(5vw + 4vh);
+      height: calc(5vw + 4vh);
+      background-color: #fff;
+    }
+  }
+}
+
+@media (orientation: portrait) {
+  .loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 120vh;
+    transform:  translate(-50%,-50%) rotate(45deg);
+    transform-origin: center;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 9999;
+    transition: all 1s ease;
+    &__box {
+      width: 7vh;
+      height: 7vh;
+      background-color: #fff;
+    }
+  }
 }

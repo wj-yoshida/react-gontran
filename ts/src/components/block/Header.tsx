@@ -5,6 +5,9 @@ export const Header = () => {
     function toggleMenu() {
         setActive(!active)
     }
+    function closeMenu() {
+        setActive(false)
+    }
     return (
         <>
         <header className={`header ${active ? "open" : ""}`}>
@@ -13,12 +16,12 @@ export const Header = () => {
                 <div className="header__menu__box"></div>
             </div>
             <ul className="header__nav">
-                <li className="header__nav__li"><Link to={"/about/"}className="font-minervamodern">GONTRAN CHERRIER</Link></li>
+                <li className="header__nav__li"><Link to={"/about/"}className="font-minervamodern" onClick={closeMenu}>GONTRAN CHERRIER</Link></li>
                 
-                <li className="header__nav__li"><Link to={"/location/"} className="font-minervamodern">LOCATION</Link></li>
+                <li className="header__nav__li"><Link to={"/location/"} className="font-minervamodern" onClick={closeMenu}>LOCATION</Link></li>
             </ul>
             <h1 className="header__logo common_logo">
-                <Link to={"/"}>
+                <Link to={"/"} onClick={closeMenu}>
                     <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo.svg" alt="logo" className="bk_logo" />
                     <img src="https://file003.shop-pro.jp/PA01461/818/svg/logo_wh.svg" alt="logo" className="wh_logo" />
                 </Link>
@@ -26,7 +29,7 @@ export const Header = () => {
             <div className="header__account">
             </div>
             <div className="header__cart">
-                <Link to="https://gontrancherrier.jp/cart/proxy/basket?shop_id=PA01461818&amp;shop_domain=gontrancherrier.jp" >
+                <Link to="https://gontrancherrier.jp/cart/proxy/basket?shop_id=PA01461818&amp;shop_domain=gontrancherrier.jp" onClick={closeMenu}>
                     <span className="txt font-minervamodern">My Cart</span>
                     <div className="header__cart__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="29.102" height="29.102" viewBox="0 0 29.102 29.102">
@@ -44,13 +47,13 @@ export const Header = () => {
             <div className="gnav__wrap">
                 <ul className="gnav__main">
                     <li className="gnav__main__li">
-                        <Link to={"/about/"} className="gnav__main__a">
+                        <Link to={"/about/"} className="gnav__main__a" onClick={closeMenu}>
                             <span className="gnav__main__a__en font-minervamodern">Gontran cherrier</span>
                             <span className="gnav__main__a__ja">ゴントラン シェリエについて</span>
                         </Link>
                     </li>
                     <li className="gnav__main__li">
-                        <Link to={"/location/"} className="gnav__main__a">
+                        <Link to={"/location/"} className="gnav__main__a" onClick={closeMenu}>
                             <span className="gnav__main__a__en font-minervamodern">Store Location</span>
                             <span className="gnav__main__a__ja">店舗所在地</span>
                         </Link>

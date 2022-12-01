@@ -58,7 +58,7 @@ const EachDivs:any = () => {
             opacity: 0,
             transition:{
                 duration: .1,
-                delay: .5
+                delay: .75
             }
             }}
             initial={{
